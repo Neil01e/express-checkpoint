@@ -23,7 +23,7 @@ const workingHoursMiddleware = (req, res, next) => {
         return next(); // Still accessible from Friday night
     }
     
-    // Outside working hours
+   
     res.status(403).render('closed', {
         title: 'LOCKDOWN',
         currentYear: date.getFullYear()
