@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>INCIDENT TIMELINE</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">CHRONOLOGICAL ORDER // GLOBAL BIOHAZARD EVENTS</p>
+    
+    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <a href="/timeline" class="timeline-btn active">MAIN TIMELINE</a>
+        <a href="/timeline/bsaa-corruption" class="timeline-btn">BSAA CORRUPTION</a>
+        <a href="/timeline/wesker-legacy" class="timeline-btn">WESKER LEGACY</a>
+        <a href="/timeline/umbrella" class="timeline-btn">UMBRELLA RISE & FALL</a>
+    </div>
+    
+    <div class="timeline">
+        <% events.forEach(event => { %>
+            <div class="timeline-item">
+                <div class="timeline-year"><%= event.year %> // <%= event.event %></div>
+                <div class="timeline-operatives"><%= event.operatives %></div>
+                <p style="margin: 1rem 0;"><%= event.description %></p>
+                <span class="threat-level <%= event.threat %>"><%= event.threat %> THREAT</span>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<%- include('partials/footer') %>

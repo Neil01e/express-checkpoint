@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>EVIDENCE LOCKER</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">CLASSIFIED MATERIALS // PHOTOGRAPHIC EVIDENCE // CASE FILES</p>
+    
+    <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <button class="btn" onclick="filterEvidence('all')">ALL</button>
+        <button class="btn" onclick="filterEvidence('database')">DATABASE</button>
+        <button class="btn" onclick="filterEvidence('deceased')">DECEASED</button>
+        <button class="btn" onclick="filterEvidence('civilian')">CIVILIAN</button>
+    </div>
+    
+    <div class="evidence-grid" id="evidenceGrid">
+        <% evidence.filter(item => item.image).forEach(item => { %>
+            <div class="evidence-item" data-category="<%= item.category %>">
+                <img src="/images/characters/<%= item.image %>" alt="<%= item.name %>" class="evidence-image">
+                <div class="evidence-category <%= item.category %>"><%= item.type %> // <%= item.category.toUpperCase() %></div>
+                <h3 style="color: #ffd700; font-size: 1rem;"><%= item.name %></h3>
+                <p style="font-size: 0.8rem;"><%= item.description %></p>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<script>
+    function filterEvidence(category) {
+        const items = document.querySelectorAll('.evidence-item');
+        items.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+<%- include('partials/footer') %>

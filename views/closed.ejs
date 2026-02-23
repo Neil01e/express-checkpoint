@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOCKDOWN // BIOHAZARD G.I.N.</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="closed-container">
+        <div style="font-size: 5rem; margin-bottom: 1rem;">☣️</div>
+        <h1>GLOBAL INTELLIGENCE NETWORK</h1>
+        <h2 style="color: #9f1d1d; font-size: 2rem; margin: 1rem 0;">STATUS: OFFLINE // LOCKDOWN</h2>
+        <p style="margin: 2rem 0;">All operatives currently deployed. Comms blackout in effect.</p>
+        
+        <div style="background: rgba(0,0,0,0.5); padding: 2rem; margin: 2rem 0; border: 1px solid #ffd700;">
+            <h3 style="color: #ffd700; margin-bottom: 1rem;">⏳ NEXT SCHEDULED CHECK-IN</h3>
+            <p style="font-size: 2rem; color: #ffd700; font-weight: bold;">09:00 HOURS</p>
+            <p style="margin-top: 0.5rem;">Monday - Friday</p>
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 2rem; margin: 3rem 0; flex-wrap: wrap;">
+            <div style="background: rgba(0,0,0,0.5); padding: 1.5rem; border: 1px solid #ffd700; min-width: 100px; text-align: center;">
+                <div style="font-size: 3rem; color: #ffd700; font-family: monospace;" id="hours">--</div>
+                <div style="color: white; font-size: 0.8rem; text-transform: uppercase; margin-top: 0.5rem;">HOURS</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.5); padding: 1.5rem; border: 1px solid #ffd700; min-width: 100px; text-align: center;">
+                <div style="font-size: 3rem; color: #ffd700; font-family: monospace;" id="minutes">--</div>
+                <div style="color: white; font-size: 0.8rem; text-transform: uppercase; margin-top: 0.5rem;">MINUTES</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.5); padding: 1.5rem; border: 1px solid #ffd700; min-width: 100px; text-align: center;">
+                <div style="font-size: 3rem; color: #ffd700; font-family: monospace;" id="seconds">--</div>
+                <div style="color: white; font-size: 0.8rem; text-transform: uppercase; margin-top: 0.5rem;">SECONDS</div>
+            </div>
+        </div>
+        
+        <p style="margin: 2rem 0; color: #e6b422;">EMERGENCY FREQUENCY: 147.3 MHz // CODE: "STARS"</p>
+        
+        <div style="margin-top: 3rem;">
+            <p style="color: #ffd700; font-family: monospace;">CURRENT TIME: <span id="currentTime"></span></p>
+            <p style="color: #666; font-size: 0.8rem; margin-top: 1rem;">© <%= currentYear %> BIOHAZARD G.I.N.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            // Display current time
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('currentTime').textContent = timeString;
+            
+            // Calculate next working hours (Monday 9 AM)
+            let targetDate = new Date(now);
+            
+            // If it's weekend or after hours, calculate next Monday 9 AM
+            if (day === 0) { // Sunday
+                targetDate.setDate(targetDate.getDate() + 1);
+                targetDate.setHours(9, 0, 0, 0);
+            } else if (day === 6) { // Saturday
+                targetDate.setDate(targetDate.getDate() + 2);
+                targetDate.setHours(9, 0, 0, 0);
+            } else if (hours >= 17) { // Weekday after 5 PM
+                targetDate.setDate(targetDate.getDate() + 1);
+                targetDate.setHours(9, 0, 0, 0);
+            } else if (hours < 9) { // Weekday before 9 AM
+                targetDate.setHours(9, 0, 0, 0);
+            } else {
+                // During working hours - shouldn't see this page
+                targetDate.setDate(targetDate.getDate() + 1);
+                targetDate.setHours(9, 0, 0, 0);
+            }
+            
+            // Fix for Friday after 5 PM - jump to Monday
+            if (day === 5 && hours >= 17) {
+                targetDate.setDate(targetDate.getDate() + 3);
+                targetDate.setHours(9, 0, 0, 0);
+            }
+            
+            const diff = targetDate - now;
+            
+            if (diff > 0) {
+                const hoursLeft = Math.floor(diff / (1000 * 60 * 60));
+                const minutesLeft = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsLeft = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hoursLeft.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutesLeft.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = secondsLeft.toString().padStart(2, '0');
+            } else {
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+        
+        // Update immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

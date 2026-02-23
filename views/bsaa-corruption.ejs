@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>BSAA CORRUPTION TIMELINE</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">USE OF B.O.W.S // INVESTIGATION // CLASSIFIED</p>
+    
+    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <a href="/timeline" class="btn">MAIN TIMELINE</a>
+        <a href="/timeline/bsaa-corruption" class="btn" style="background: #ffd700; color: #0a0c0f;">BSAA CORRUPTION</a>
+        <a href="/timeline/wesker-legacy" class="btn">WESKER LEGACY</a>
+        <a href="/timeline/umbrella" class="btn">UMBRELLA RISE & FALL</a>
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-year">2003 // BSAA FOUNDED</div>
+            <p>Founded to combat bioterrorism. Original goal: eliminate B.O.W. usage.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">2009 // POST-WESKER</div>
+            <p>BSAA expands globally. Chris Redfield expresses concerns about direction.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">2013 // PIERS' DEATH</div>
+            <p>Chris loses partner Piers Nivans. BSAA leadership questioned.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">2017-2021 // SECRET OPERATIONS</div>
+            <p>BSAA begins using B.O.W. soldiers in secret. Chris leaves the organization.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">2021 // VILLAGE INCIDENT</div>
+            <p>Chris confronts BSAA soldiers - reveals they are B.O.W. constructs.</p>
+            <span class="threat-level CRITICAL">CORRUPTION CONFIRMED</span>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">2023 // ONGOING INVESTIGATION</div>
+            <p>Chris and Jill leading investigation into BSAA leadership. Classified.</p>
+            <span class="threat-level ACTIVE">ACTIVE</span>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

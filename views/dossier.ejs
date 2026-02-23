@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>CLASSIFIED DOSSIER // <%= operative.name %></h1>
+    
+    <div class="dossier-container">
+        <div>
+            <div class="dossier-photo">
+                <img src="/images/characters/<%= operative.image %>" alt="<%= operative.name %>">
+            </div>
+            <div style="margin-top: 1rem; text-align: center;">
+                <div class="agency-badge" style="justify-content: center;">
+                    <img src="/images/logos/<%= operative.agencyLogo %>" alt="<%= operative.agency %>" style="width: 32px;">
+                    <span class="agency"><%= operative.agency %></span>
+                </div>
+                <span class="status-badge <%= operative.status.toLowerCase() %>"><%= operative.status %></span>
+            </div>
+        </div>
+        
+        <div>
+            <h2>OPERATIVE DETAILS</h2>
+            <div style="background: rgba(0,0,0,0.5); padding: 2rem; border: 1px solid #ffd700;">
+                <div class="stat-row"><span class="stat-label">Full Name:</span><span class="stat-value"><%= operative.name %></span></div>
+                <div class="stat-row"><span class="stat-label">Clearance Level:</span><span class="stat-value"><%= operative.clearance %></span></div>
+                <div class="stat-row"><span class="stat-label">Last Known Location:</span><span class="stat-value"><%= operative.lastSeen %></span></div>
+                <div class="stat-row"><span class="stat-label">Specialization:</span><span class="stat-value"><%= operative.specialty %></span></div>
+                <div class="stat-row"><span class="stat-label">Case File:</span><span class="stat-value">#<%= operative.case %></span></div>
+            </div>
+            
+            <h2 style="margin-top: 2rem;">FIELD NOTES</h2>
+            <div class="quote" style="font-size: 1rem; padding: 1.5rem;">
+                "<%= operative.quote %>"
+            </div>
+            
+            <h2 style="margin-top: 2rem;">MISSION HISTORY</h2>
+            <div style="background: rgba(0,0,0,0.5); padding: 1rem;">
+                <div class="stat-row">Raccoon City (1998) - <span class="stat-value"><%= operative.name.includes('CHRIS') ? 'NOT PRESENT' : operative.name.includes('BARRY') ? 'NOT PRESENT' : operative.name.includes('REBECCA') ? 'NOT PRESENT' : 'CONFIRMED' %></span></div>
+                <div class="stat-row">Global Operations - <span class="stat-value">CLASSIFIED</span></div>
+                <div class="stat-row">Current Status - <span class="stat-value" style="color: #00ff00;"><%= operative.status %></span></div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <a href="/evidence" class="btn">VIEW EVIDENCE</a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

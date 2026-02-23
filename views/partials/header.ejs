@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> // BIOHAZARD // G.T.A.</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="/images/logos/biohazard.png" alt="BIOHAZARD">
+            </a>
+            <div class="threat-indicator">
+                <span style="background: #ffd700; box-shadow: 0 0 10px #ffd700;"></span>
+                THREAT LEVEL: █████ ACTIVE
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" <%= title === 'GLOBAL THREAT ASSESSMENT' ? 'class="active"' : '' %>>DATABASE</a></li>
+                <li><a href="/services" <%= title === 'SPECIAL OPERATIONS DIRECTORY' ? 'class="active"' : '' %>>OPERATIONS</a></li>
+                <li><a href="/missions" <%= title === 'MISSION BRIEFING BOARD' ? 'class="active"' : '' %>>MISSIONS</a></li>
+                <li><a href="/evidence" <%= title === 'EVIDENCE LOCKER' ? 'class="active"' : '' %>>EVIDENCE</a></li>
+                <li><a href="/timeline" <%= title === 'INCIDENT TIMELINE' ? 'class="active"' : '' %>>TIMELINE</a></li>
+                <li><a href="/contact" <%= title === 'INTEL SUBMISSION' ? 'class="active"' : '' %>>SUBMIT INTEL</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>

@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>MISSION BRIEFING BOARD</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">ACTIVE AND COMPLETED OPERATIONS // GLOBAL INTELLIGENCE NETWORK</p>
+    
+    <div class="missions-grid">
+        <% missions.forEach(mission => { %>
+            <div class="mission-card">
+                <div class="mission-header">
+                    <span class="mission-year"><%= mission.year %></span>
+                    <span class="threat-level <%= mission.threat %>"><%= mission.threat %> THREAT</span>
+                </div>
+                <h3 style="color: #ffd700; margin-bottom: 1rem;"><%= mission.event %></h3>
+                <div class="stat-row"><span class="stat-label">Operatives:</span><span class="stat-value"><%= mission.operatives %></span></div>
+                <div class="stat-row"><span class="stat-label">Status:</span><span class="stat-value" style="color: <%= mission.threat === 'ACTIVE' ? '#ffd700' : '#2a6d3c' %>"><%= mission.threat === 'ACTIVE' ? 'ACTIVE' : 'COMPLETED' %></span></div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<%- include('partials/footer') %>

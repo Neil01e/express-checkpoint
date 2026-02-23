@@ -1,0 +1,66 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>OPERATIVE DATABASE</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">ACTIVE OPERATIVES // GLOBAL INTELLIGENCE NETWORK // CLEARANCE: VARIES</p>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="SEARCH BY NAME, AGENCY, SPECIALTY...">
+        <select id="agencyFilter">
+            <option value="all">ALL AGENCIES</option>
+            <option value="D.S.O.">D.S.O.</option>
+            <option value="HOUND WOLF SQUAD">HOUND WOLF</option>
+            <option value="TERRASAVE">TERRASAVE</option>
+            <option value="BSAA">BSAA</option>
+            <option value="INDEPENDENT">INDEPENDENT</option>
+            <option value="FBC">FBC</option>
+            <option value="THE CONNECTIONS">CONNECTIONS</option>
+        </select>
+    </div>
+    
+    <div class="operatives-grid" id="operativesGrid">
+        <% operatives.forEach(op => { %>
+            <div class="operative-card" data-id="<%= op.id %>" data-agency="<%= op.agency === '████████' ? 'unknown' : op.agency.includes('INDEPENDENT') ? 'independent' : op.agency.toLowerCase().replace(/\s+/g, '') %>" onclick="window.location.href='/operative/<%= op.id %>'">
+                <div class="card-header">
+                    <div class="mugshot-frame" data-case="<%= op.case %>">
+                        <img src="/images/characters/<%= op.image %>" alt="<%= op.name %>" class="character-img">
+                    </div>
+                    <div class="operative-id">
+                        <div class="agency-badge">
+                            <img src="/images/logos/<%= op.agencyLogo %>" alt="<%= op.agency %>">
+                            <span class="agency"><%= op.agency %></span>
+                        </div>
+                        <h3><%= op.name %></h3>
+                        <div class="clearance">CLEARANCE: <%= op.clearance %></div>
+                        <span class="status-badge <%= op.status.toLowerCase() %>"><%= op.status %></span>
+                    </div>
+                </div>
+                <div class="operative-stats">
+                    <div class="stat-row"><span class="stat-label">Last Seen:</span><span class="stat-value"><%= op.lastSeen %></span></div>
+                    <div class="stat-row"><span class="stat-label">Specialty:</span><span class="stat-value"><%= op.specialty %></span></div>
+                </div>
+                <div class="quote">"<%= op.quote %>"</div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<script>
+    document.getElementById('searchInput').addEventListener('input', filterCards);
+    document.getElementById('agencyFilter').addEventListener('change', filterCards);
+    
+    function filterCards() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const agencyFilter = document.getElementById('agencyFilter').value;
+        const cards = document.querySelectorAll('.operative-card');
+        
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            const agencyElement = card.querySelector('.agency');
+            const agency = agencyElement ? agencyElement.textContent : '';
+            const matchesSearch = text.includes(searchTerm);
+            const matchesAgency = agencyFilter === 'all' || agency.includes(agencyFilter);
+            
+            card.style.display = matchesSearch && matchesAgency ? 'block' : 'none';
+        });
+    }
+</script>
+<%- include('partials/footer') %>

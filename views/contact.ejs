@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>INTEL SUBMISSION</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">ENCRYPTED TRANSMISSION // ROUTED TO APPROPRIATE AGENCY</p>
+    
+    <div class="typewriter-form">
+        <form action="/contact" method="POST">
+            <div style="margin-bottom: 2rem;">
+                <label class="form-label" style="color: #ffd700;">OPERATIVE ID / BADGE NUMBER</label>
+                <input type="text" name="name" class="typewriter-input" required placeholder="ENTER DESIGNATION">
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <label class="form-label" style="color: #ffd700;">COMMS FREQUENCY (EMAIL)</label>
+                <input type="email" name="email" class="typewriter-input" required placeholder="secure@channel.com">
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <label class="form-label" style="color: #ffd700;">INTENDED RECIPIENT</label>
+                <select name="subject" class="typewriter-input" required>
+                    <option value="">-- SELECT AGENCY --</option>
+                    <option value="DSO">D.S.O. (Leon, Sherry, Helena)</option>
+                    <option value="HOUND WOLF">HOUND WOLF SQUAD (Chris)</option>
+                    <option value="TERRASAVE">TERRASAVE (Claire, Rebecca)</option>
+                    <option value="BSAA">BSAA (Jill, Rosemary)</option>
+                    <option value="INDEPENDENT">INDEPENDENT (HUNK, Jake, Barry)</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <label class="form-label" style="color: #ffd700;">INTEL DETAILS</label>
+                <textarea name="message" class="typewriter-input" rows="6" required placeholder="DESCRIBE INCIDENT // B.O.W. SIGHTING // INTEL"></textarea>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%;">TRANSMIT INTEL</button>
+        </form>
+        <div class="ink-ribbon">INK RIBBON // 1 LEFT</div>
+    </div>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,85 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>SPECIAL OPERATIONS DIRECTORY</h1>
+    <p style="color: var(--terminal-white); margin-bottom: 2rem;">AGENCY SPECIALIZATIONS // CLEARANCE: BETA // UPDATED: <%= new Date().toLocaleDateString() %></p>
+    
+    <div class="agency-grid">
+        <div class="agency-card" data-agency="dso">
+            <div class="agency-icon"><img src="/images/logos/dso-logo.png" alt="DSO"></div>
+            <h3>D.S.O. // DIVISION OF SECURITY OPERATIONS</h3>
+            <div class="agency-lead">Lead Operatives: KENNEDY, BIRKIN, HARPER</div>
+            <ul class="agency-services">
+                <li>Presidential Protection & Extraction</li>
+                <li>High-Value Target Acquisition</li>
+                <li>Black Ops Protocol Management</li>
+                <li>International Intelligence Sharing</li>
+                <li>Viral Research & Containment</li>
+            </ul>
+        </div>
+        
+        <div class="agency-card" data-agency="houndwolf">
+            <div class="agency-icon"><img src="/images/logos/houndwolf-logo.png" alt="Hound Wolf Squad"></div>
+            <h3>HOUND WOLF SQUAD</h3>
+            <div class="agency-lead">Squad Leader: REDFIELD, Chris</div>
+            <ul class="agency-services">
+                <li>B.O.W. Elimination & Containment</li>
+                <li>Rogue Agency Investigation</li>
+                <li>Hostile Territory Recon</li>
+                <li>Civilian Extraction (High-Risk)</li>
+                <li>Black Market Bioweapon Interdiction</li>
+            </ul>
+        </div>
+        
+        <div class="agency-card" data-agency="terrasave">
+            <div class="agency-icon"><img src="/images/logos/terrasave-logo.png" alt="TerraSave"></div>
+            <h3>TERRASAVE // CIVILIAN AFFAIRS</h3>
+            <div class="agency-lead">Field Agents: REDFIELD, Claire / CHAMBERS, Rebecca</div>
+            <ul class="agency-services">
+                <li>Bio-terror Victim Recovery</li>
+                <li>Refugee Camp Security</li>
+                <li>Underground Network Intelligence</li>
+                <li>Field Medicine & Triage</li>
+                <li>Public Awareness Campaigns</li>
+            </ul>
+        </div>
+        
+        <div class="agency-card" data-agency="bsaa">
+            <div class="agency-icon"><img src="/images/logos/bsaa-logo.png" alt="BSAA"></div>
+            <h3>BSAA // BIOTERRORISM SECURITY ASSESSMENT ALLIANCE</h3>
+            <div class="agency-lead">Assets: VALENTINE, Jill / WINTERS, Rosemary</div>
+            <ul class="agency-services">
+                <li>Deep Infiltration Operations</li>
+                <li>Explosive Ordnance Disposal</li>
+                <li>Covert Rescue Operations</li>
+                <li>Special Biological Response</li>
+                <li>Intelligence Gathering</li>
+            </ul>
+        </div>
+        
+        <div class="agency-card" data-agency="ubcs">
+            <div class="agency-icon"><img src="/images/logos/unknown.png" alt="UBCS"></div>
+            <h3>U.B.C.S. // UMBRELLA BIOHAZARD COUNTERMEASURE SERVICE</h3>
+            <div class="agency-lead">Survivor: OLIVEIRA, Carlos</div>
+            <ul class="agency-services">
+                <li>Emergency Response Operations</li>
+                <li>Civilian Evacuation</li>
+                <li>Urban Combat Tactics</li>
+                <li>Disputed - Former Umbrella Asset</li>
+            </ul>
+        </div>
+        
+        <div class="agency-card" data-agency="independent">
+            <div class="agency-icon"><img src="/images/logos/skull.png" alt="Independent"></div>
+            <h3>INDEPENDENT CONTRACTORS</h3>
+            <div class="agency-lead">Assets: HUNK, MULLER, BURTON, LUCIANI</div>
+            <ul class="agency-services">
+                <li>Wet Work Operations</li>
+                <li>Mercenary Services</li>
+                <li>Black Site Operations</li>
+                <li>Specialized Retrieval</li>
+                <li>No Official Affiliation</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

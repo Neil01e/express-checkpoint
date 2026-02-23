@@ -1,0 +1,48 @@
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>☣️ BIOHAZARD G.I.N.</h4>
+                <p>GLOBAL INTELLIGENCE NETWORK</p>
+                <p>OPERATIVES: 16 ACTIVE</p>
+                <p>EVENTS: 21 DOCUMENTED</p>
+            </div>
+            <div class="footer-section">
+                <h4>AGENCY LINKS</h4>
+                <a href="/">DATABASE</a>
+                <a href="/services">OPERATIONS</a>
+                <a href="/missions">MISSIONS</a>
+                <a href="/evidence">EVIDENCE</a>
+                <a href="/timeline">TIMELINE</a>
+                <a href="/contact">SUBMIT INTEL</a>
+            </div>
+            <div class="footer-section">
+                <h4>TIMELINES</h4>
+                <a href="/timeline">MAIN EVENTS</a>
+                <a href="/timeline/bsaa-corruption">BSAA CORRUPTION</a>
+                <a href="/timeline/wesker-legacy">WESKER LEGACY</a>
+                <a href="/timeline/umbrella">UMBRELLA RISE & FALL</a>
+            </div>
+            <div class="footer-section">
+                <h4>EMERGENCY FREQ</h4>
+                <p>DSO: 147.3 MHz</p>
+                <p>HOUND WOLF: 92.5 MHz</p>
+                <p>TERRASAVE: 108.0 MHz</p>
+                <p id="liveTime">--:--:--</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© <%= currentYear %> BIOHAZARD GLOBAL INTELLIGENCE NETWORK // ALL INTELLIGENCE IS CLASSIFIED // UNAUTHORIZED ACCESS PROSECUTED</p>
+        </div>
+    </footer>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            const timeElement = document.getElementById('liveTime');
+            if (timeElement) timeElement.textContent = timeString;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
