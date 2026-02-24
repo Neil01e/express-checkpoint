@@ -4,10 +4,10 @@
     <p style="color: var(--terminal-white); margin-bottom: 2rem;">CHRONOLOGICAL ORDER // GLOBAL BIOHAZARD EVENTS</p>
     
     <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
-        <a href="/timeline" class="timeline-btn active">MAIN TIMELINE</a>
-        <a href="/timeline/bsaa-corruption" class="timeline-btn">BSAA CORRUPTION</a>
-        <a href="/timeline/wesker-legacy" class="timeline-btn">WESKER LEGACY</a>
-        <a href="/timeline/umbrella" class="timeline-btn">UMBRELLA RISE & FALL</a>
+        <a href="/timeline" class="timeline-btn <%= title === 'INCIDENT TIMELINE' ? 'active' : '' %>">MAIN TIMELINE</a>
+        <a href="/timeline/bsaa-corruption" class="timeline-btn <%= title === 'BSAA CORRUPTION TIMELINE' ? 'active' : '' %>">BSAA CORRUPTION</a>
+        <a href="/timeline/wesker-legacy" class="timeline-btn <%= title === 'WESKER LEGACY TIMELINE' ? 'active' : '' %>">WESKER LEGACY</a>
+        <a href="/timeline/umbrella" class="timeline-btn <%= title === 'UMBRELLA RISE & FALL' ? 'active' : '' %>">UMBRELLA RISE & FALL</a>
     </div>
     
     <div class="timeline">

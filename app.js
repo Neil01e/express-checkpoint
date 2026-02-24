@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(workingHoursMiddleware);
 
-// FIRST define operatives
+
 const operatives = [
     { id: 'leon', name: 'KENNEDY, LEON S.', agency: 'D.S.O.', clearance: 'GOLDEN EYE', status: 'ACTIVE', image: 'leon.jpg', case: 'DSO-001', quote: 'Reports directly to POTUS. Multiple viral outbreak survivals.', lastSeen: 'Eastern Europe', specialty: 'Presidential Security', agencyLogo: 'dso-logo.png' },
     { id: 'chris', name: 'REDFIELD, CHRIS', agency: 'HOUND WOLF SQUAD', clearance: 'ALPHA', status: 'ACTIVE', image: 'chris.jpg', case: 'HWS-001', quote: 'Former BSAA. Now leads own squad. Lone Wolf.', lastSeen: 'European Village', specialty: 'B.O.W. Elimination', agencyLogo: 'houndwolf-logo.png' },
@@ -34,12 +34,12 @@ const operatives = [
     { id: 'sheva', name: 'ALOMAR, SHEVA', agency: 'BSAA', clearance: 'ALPHA', status: 'ACTIVE', image: 'sheva.jpg', case: 'BSAA-003', quote: 'BSAA agent. Partnered with Chris in Africa.', lastSeen: 'Africa', specialty: 'Counter-Terrorism', agencyLogo: 'bsaa-logo.png' }
 ];
 
-// THEN define evidenceItems using operatives
+
 const evidenceItems = [
-    // Database characters (with pics)
+    
     ...operatives.map(op => ({ type: 'PHOTO', name: op.name, image: op.image, description: `Classified image. Case #${op.case}.`, category: 'database' })),
     
-    // Mention characters with pics ONLY
+   
     { type: 'PHOTO', name: 'ETHAN WINTERS', image: 'ethan.jpg', description: 'Deceased. RE7/RE8 protagonist. Mold connection.', category: 'deceased' },
     { type: 'PHOTO', name: 'MIA WINTERS', image: 'mia.jpg', description: 'Ethan\'s wife. Former Connections employee.', category: 'civilian' },
     { type: 'PHOTO', name: 'KRAUSER', image: 'krauser.jpg', description: 'Deceased. Former USSOCOM. RE4 antagonist.', category: 'deceased' },

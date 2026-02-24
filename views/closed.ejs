@@ -45,37 +45,36 @@
     <script>
         function updateCountdown() {
             const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+            const day = now.getDay();
             const hours = now.getHours();
             const minutes = now.getMinutes();
             const seconds = now.getSeconds();
             
-            // Display current time
+            
             const timeString = now.toLocaleTimeString();
             document.getElementById('currentTime').textContent = timeString;
             
-            // Calculate next working hours (Monday 9 AM)
             let targetDate = new Date(now);
             
-            // If it's weekend or after hours, calculate next Monday 9 AM
-            if (day === 0) { // Sunday
+         
+            if (day === 0) { 
                 targetDate.setDate(targetDate.getDate() + 1);
                 targetDate.setHours(9, 0, 0, 0);
-            } else if (day === 6) { // Saturday
+            } else if (day === 6) { 
                 targetDate.setDate(targetDate.getDate() + 2);
                 targetDate.setHours(9, 0, 0, 0);
-            } else if (hours >= 17) { // Weekday after 5 PM
+            } else if (hours >= 17) { 
                 targetDate.setDate(targetDate.getDate() + 1);
                 targetDate.setHours(9, 0, 0, 0);
-            } else if (hours < 9) { // Weekday before 9 AM
+            } else if (hours < 9) { 
                 targetDate.setHours(9, 0, 0, 0);
             } else {
-                // During working hours - shouldn't see this page
+                
                 targetDate.setDate(targetDate.getDate() + 1);
                 targetDate.setHours(9, 0, 0, 0);
             }
             
-            // Fix for Friday after 5 PM - jump to Monday
+           
             if (day === 5 && hours >= 17) {
                 targetDate.setDate(targetDate.getDate() + 3);
                 targetDate.setHours(9, 0, 0, 0);
@@ -98,7 +97,7 @@
             }
         }
         
-        // Update immediately and then every second
+        
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>

@@ -14,7 +14,7 @@
     --blood-red: #8b0000;
     --evidence-yellow: #c5a028;
     --glitch-pink: #ff00ff;
-    --biohazard-yellow: #d19105;
+    --biohazard-yellow: #ff9900;
     --wesker-purple: #6a0dad;
     --active-green: #00ff00;
     --terminal-glow: 0 0 10px rgba(255, 215, 0, 0.3);
@@ -251,6 +251,86 @@ h2 {
     border-left: 3px solid var(--biohazard-yellow);
 }
 
+.timeline-btn {
+    background: transparent;
+    color: var(--terminal-white);
+    border: 2px solid var(--biohazard-yellow);
+    padding: 0.8rem 1.5rem;
+    font-family: var(--terminal-font);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.timeline-btn::before {
+    content: "[";
+    position: absolute;
+    left: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--biohazard-yellow);
+}
+
+.timeline-btn::after {
+    content: "]";
+    position: absolute;
+    right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--biohazard-yellow);
+}
+
+.timeline-btn:hover::before,
+.timeline-btn:hover::after {
+    opacity: 1;
+}
+
+.timeline-btn:hover {
+    background: var(--biohazard-yellow);
+    color: var(--dso-black);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.timeline-btn.active {
+    background: var(--biohazard-yellow) !important;
+    color: var(--dso-black) !important;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    border-color: var(--biohazard-yellow) !important;
+}
+
+.timeline-btn.active::before,
+.timeline-btn.active::after {
+    opacity: 1 !important;
+    color: var(--dso-black) !important;
+}
+
+.timeline-btn.active:hover {
+    background: var(--biohazard-yellow);
+    color: var(--dso-black);
+}
+
+.timeline-btn.active {
+    background: var(--biohazard-yellow) !important;
+    color: var(--dso-black) !important;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    border-color: var(--biohazard-yellow);
+}
+
+.timeline-btn.active::before,
+.timeline-btn.active::after {
+    opacity: 1;
+    color: var(--dso-black);
+}
+
 .search-bar {
     margin-bottom: 2rem;
     display: flex;
@@ -378,7 +458,6 @@ h2 {
     transform: scale(1.05);
 }
 
-/* ADA GLITCH EFFECT */
 .operative-card[data-agency="unknown"] {
     animation: cardGlitch 4s infinite;
 }
@@ -403,7 +482,6 @@ h2 {
     97% { filter: grayscale(30%) hue-rotate(-90deg); }
 }
 
-/* JAKE PURPLE GLOW */
 .operative-card[data-id="jake"] .character-img {
     filter: grayscale(20%) contrast(130%) brightness(1.1);
     border: 3px solid var(--wesker-purple);
@@ -420,7 +498,6 @@ h2 {
     filter: grayscale(0%) contrast(140%) brightness(1.2);
 }
 
-/* INDEPENDENT (skull logo) */
 .operative-card[data-agency="independent"] .character-img {
     filter: grayscale(30%) contrast(150%);
     border: 2px solid var(--hound-red);
@@ -586,24 +663,29 @@ h2 {
     color: var(--hound-red);
 }
 
-.missions-grid, .events-grid {
+.missions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin: 2rem 0;
 }
 
-.mission-card, .event-card {
+.mission-card {
     background: rgba(20, 25, 30, 0.9);
     border: 1px solid var(--biohazard-yellow);
     padding: 1.5rem;
 }
 
-.event-year {
+.mission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.mission-year {
     color: var(--biohazard-yellow);
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .threat-level {
@@ -611,7 +693,6 @@ h2 {
     padding: 0.2rem 0.5rem;
     font-size: 0.7rem;
     border: 1px solid;
-    margin-top: 0.5rem;
 }
 
 .threat-level.CRITICAL {
@@ -660,67 +741,10 @@ h2 {
 
 .evidence-category.deceased { color: var(--hound-red); }
 .evidence-category.civilian { color: var(--terrasave-blue); }
-.evidence-category.text { color: var(--warning-amber); }
 
 .timeline {
     position: relative;
     padding: 2rem 0;
-}
-
-/* Timeline Buttons */
-.timeline-btn {
-    background: transparent;
-    color: var(--terminal-white);
-    border: 2px solid var(--biohazard-yellow);
-    padding: 0.8rem 1.5rem;
-    font-family: var(--terminal-font);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-}
-
-.timeline-btn::before {
-    content: "[";
-    position: absolute;
-    left: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    color: var(--biohazard-yellow);
-}
-
-.timeline-btn::after {
-    content: "]";
-    position: absolute;
-    right: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    color: var(--biohazard-yellow);
-}
-
-.timeline-btn:hover::before,
-.timeline-btn:hover::after,
-.timeline-btn.active::before,
-.timeline-btn.active::after {
-    opacity: 1;
-}
-
-.timeline-btn:hover,
-.timeline-btn.active {
-    background: var(--biohazard-yellow);
-    color: var(--dso-black);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-}
-
-.timeline-btn.active {
-    background: var(--biohazard-yellow);
-    color: var(--dso-black);
-    font-weight: bold;
 }
 
 .timeline::before {
@@ -780,37 +804,6 @@ h2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.audio-player {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--biohazard-yellow);
-    padding: 1rem;
-    margin: 1rem 0;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.audio-player:hover {
-    background: rgba(255,215,0,0.1);
-    border-color: var(--warning-amber);
-}
-
-.audio-icon {
-    font-size: 2rem;
-}
-
-.audio-info h4 {
-    color: var(--biohazard-yellow);
-    margin-bottom: 0.3rem;
-}
-
-.audio-info p {
-    font-size: 0.8rem;
-    opacity: 0.7;
 }
 
 .typewriter-form {
@@ -930,13 +923,29 @@ footer {
         margin-top: 1rem;
         border-top: 1px solid var(--biohazard-yellow);
         background: rgba(10, 12, 15, 0.98);
+        position: relative;
+        z-index: 1000;
+        pointer-events: all;
     }
-    .nav-links.active { display: flex; }
-    .nav-links li { width: 100%; text-align: center; }
-    .nav-links li a { display: block; padding: 1rem; width: 100%; }
-    .nav-links li a::before,
-    .nav-links li a::after { display: none; }
-    .logo img { height: 30px; }
+    .nav-links.active {
+        display: flex !important;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        pointer-events: all;
+    }
+    .nav-links li a {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+        pointer-events: all;
+        cursor: pointer;
+    }
+    .menu-toggle {
+        z-index: 1001;
+        cursor: pointer;
+    }
     .threat-indicator { display: none; }
     .card-header { flex-direction: column; align-items: center; text-align: center; }
     .mugshot-frame { margin: 0 auto; }

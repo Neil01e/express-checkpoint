@@ -4,10 +4,10 @@
     <p style="color: var(--terminal-white); margin-bottom: 2rem;">ALBERT WESKER // JAKE MULLER // UROBOROS</p>
     
     <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
-        <a href="/timeline" class="btn">MAIN TIMELINE</a>
-        <a href="/timeline/bsaa-corruption" class="btn">BSAA CORRUPTION</a>
-        <a href="/timeline/wesker-legacy" class="btn" style="background: #ffd700; color: #0a0c0f;">WESKER LEGACY</a>
-        <a href="/timeline/umbrella" class="btn">UMBRELLA RISE & FALL</a>
+        <a href="/timeline" class="timeline-btn <%= title === 'INCIDENT TIMELINE' ? 'active' : '' %>">MAIN TIMELINE</a>
+        <a href="/timeline/bsaa-corruption" class="timeline-btn <%= title === 'BSAA CORRUPTION TIMELINE' ? 'active' : '' %>">BSAA CORRUPTION</a>
+        <a href="/timeline/wesker-legacy" class="timeline-btn <%= title === 'WESKER LEGACY TIMELINE' ? 'active' : '' %>">WESKER LEGACY</a>
+        <a href="/timeline/umbrella" class="timeline-btn <%= title === 'UMBRELLA RISE & FALL' ? 'active' : '' %>">UMBRELLA RISE & FALL</a>
     </div>
     
     <div class="timeline">
