@@ -3,11 +3,11 @@ const workingHoursMiddleware = (req, res, next) => {
     const day = date.getDay(); 
     const hour = date.getHours();
     
-    // Working hours: Monday to Friday, 9 AM to 2 AM
+    // Working hours: Monday to Friday, 9 AM to  7PM
     if (day >= 1 && day <= 5) { // Monday to Friday
         if (hour >= 9) { // 9am to midnight
             return next();
-        } else if (hour < 2) { // 12am to 2am (still within Friday night into Saturday)
+        } else if (hour < 19) {
             
             if (day === 5 && hour < 2) { // Friday night after midnight
                 return next();
